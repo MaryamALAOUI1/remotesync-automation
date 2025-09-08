@@ -1,5 +1,3 @@
-// tests/rc-reports.spec.ts
-
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
@@ -32,8 +30,6 @@ test.describe('RC - Report Management', () => {
 
         await expect(reportsPage.notificationToast).toBeVisible();
         
-        // FIX: The regular expression is now corrected to match the actual
-        // success message "Report updated successfully".
         await expect(reportsPage.notificationToast).toContainText(/Report updated successfully/i);
     });
 
@@ -43,7 +39,6 @@ test.describe('RC - Report Management', () => {
 
         await expect(reportsPage.notificationToast).toBeVisible();
         
-        // Applying the same fix here for consistency.
         await expect(reportsPage.notificationToast).toContainText(/Report updated successfully/i);
     });
 });
