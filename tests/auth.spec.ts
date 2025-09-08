@@ -1,15 +1,18 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
+import users from '../fixtures/users.json';
+
 
 test.describe('Authentication flows', () => {
   let loginPage: LoginPage;
   let dashboardPage: DashboardPage;
 
-  const activeUserEmail = 'fatima.bennani@remotesync.com';
+  const activeUserEmail = users.collaborator.email;
   const activeUserPassword = 'user123';
-  const disabledUserEmail = 'amine.berrada@remotesync.com'; 
+  const disabledUserEmail = users.disabled.email; 
   const disabledUserPassword = 'user123';
+  
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);

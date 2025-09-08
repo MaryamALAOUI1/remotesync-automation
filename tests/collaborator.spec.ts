@@ -3,15 +3,16 @@ import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { CalendarPage } from '../pages/CalendarPage';
 import { ReportsPage } from '../pages/ReportsPage';
-
+import requestExample from '../fixtures/requests.json';
+import users from '../fixtures/users.json';
 test.describe('Collaborator Role User Journeys', () => {
     let loginPage: LoginPage;
     let dashboardPage: DashboardPage;
     let calendarPage: CalendarPage;
     let reportsPage: ReportsPage;
 
-    const collaboratorEmail = 'fatima.bennani@remotesync.com';
-    const collaboratorPassword = 'user123';
+    const collaboratorEmail = users.collaborator.email;
+    const collaboratorPassword = users.collaborator.password;
 
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
@@ -37,16 +38,12 @@ test.describe('Collaborator Role User Journeys', () => {
     test('should successfully submit a valid modification request', async () => {
         await reportsPage.goto();
 
-        const requestDetails = {
-            title: 'Request: Doctor Appointment',
-            reason: 'Health issues', 
-            description: 'I need to shift my on-site day due to a scheduled appointment.'
-        };
+        const request= requestExample.requestExample;
 
         await reportsPage.createValidRequest(
-            requestDetails.title,
-            requestDetails.reason, 
-            requestDetails.description
+            request.title,
+            request.reason, 
+            request.description
         );
 
         await expect(reportsPage.notificationToast).toBeVisible();

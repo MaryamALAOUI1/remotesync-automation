@@ -1,0 +1,26 @@
+{
+  "collaborator": {
+    "email": "fatima.bennani@remotesync.com",
+    "firstName": "Fatima",
+    "lastName": "Bennani",
+    "phone": "+1 5531807874",
+    "password":"user123"
+  },
+  "manager": {
+    "email": "manager1",
+    "username": "manager1",
+    "password":"manager123"
+  },
+  "employee": {
+    "username": "employee",
+    "password":"employee123"
+  },
+  "disabled": {
+    "email": "amine.berrada@remotesync.com",
+    "password":"user123"
+  },
+  "nonexistent": {
+    "email": "no.such@remotesync.com",
+    "password":"whatever"
+  }
+}

@@ -2,14 +2,15 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
 import { RcReportsPage } from '../pages/RcReportsPage';
+import users from '../fixtures/users.json';
 
 test.describe('RC - Report Management', () => {
     let loginPage: LoginPage;
     let dashboardPage: DashboardPage;
     let reportsPage: RcReportsPage;
 
-    const managerEmail = 'manager1';
-    const managerPassword = 'manager123';
+    const managerEmail = users.manager.email;
+    const managerPassword = users.manager.password;
         
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);

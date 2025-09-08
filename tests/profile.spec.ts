@@ -2,14 +2,16 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { ProfilePage } from '../pages/ProfilePage';
 import { DashboardPage } from '../pages/DashboardPage'; 
+import users from '../fixtures/users.json';
 
 test.describe('User Profile and Settings', () => {
     let loginPage: LoginPage;
     let profilePage: ProfilePage;
     let dashboardPage: DashboardPage; 
 
-    const userEmail = 'fatima.bennani@remotesync.com'; 
-    const userPassword = 'user123';
+    const userEmail = users.collaborator.email; 
+    const userPassword = users.collaborator.password;
+    const newPhoneNumber =users.collaborator.phone;
 
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
@@ -33,7 +35,7 @@ test.describe('User Profile and Settings', () => {
     });
 
     test('should successfully update the phone number with valid data', async ({ page }) => {
-        const newPhoneNumber = '+1 5581707838';
+        
         
         await profilePage.updatePhoneNumber(newPhoneNumber);
         
