@@ -57,7 +57,7 @@ test('Forgot password: non rxisting user', async () => {
     await expect(loginPage.notificationToast).toBeVisible({ timeout: 10000 });
     await expect(loginPage.notificationToast).toContainText(/User not found with email/i);
 });
-
+// Skipping due to bug RSYNC-BUG-001
   test.skip('Forgot password: existing user receives reset link toast', async () => {
     await loginPage.clickForgotPassword();
     await loginPage.sendResetLink(activeUserEmail);
